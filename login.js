@@ -31,11 +31,10 @@ const cont = document.querySelector('.cont')
 const btn = document.querySelector('.btn2')
 const wrong = document.querySelector('.wrong')
 const signIn = ()=>{
-    allStudents.map(item => {
-        const emal = item.email
-        const pass = item.passWord
-        if(email.disabled === false) {
-            let isFound = false
+    if(email.disabled === false) {
+        let isFound = false
+        allStudents.map(item => {
+            const emal = item.email
             if(emal === email.value) {
                 cont.style.display = 'flex'
                 setTimeout(()=>{
@@ -46,16 +45,19 @@ const signIn = ()=>{
                 },50)
                 isFound = true
             }
-            isFound ? '' : alert('Email not found, pls try again or create an account')
-        }
-        else if(email.disabled === true) {
-            let found = false
+        })
+        isFound ? '' : console.log('Email not found, pls try again or create an account')
+    }
+    else if(email.disabled === true) {
+        let found = false
+        allStudents.map(item =>{
+            const pass = item.passWord
             if (pass === password.value) {
                 localStorage.setItem('active', JSON.stringify(item))
                 window.location.href = 'dashboard.html'
                 found = true
             }
-            found ? '' : wrong.style.display = 'block'
-        }
-    })
+        })
+        found ? '' : wrong.style.display = 'block'
+    }
 }
