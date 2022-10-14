@@ -1,0 +1,40 @@
+input {
+    /* display: block; */
+    margin-bottom: 10px;
+    width: 259px;
+}
+textarea {
+    padding: 10px;
+    width: 295px;
+    height: 100px;
+}
+.container {
+    margin-top: 10px;
+    border: 2px solid black;
+    padding: 10px;
+    visibility: hidden;
+    width: fit-content;
+}
+.created {
+    display: flex;
+    border: thin solid black;
+    margin: 3px 0;
+    width: 271px;
+    padding: 10px;
+}
+.edit {
+    border: none;
+    padding: 5px;
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+    margin-left: auto;
+    margin-right: 4px;
+}
+.delete {
+    border: none;
+    padding: 5px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+}
