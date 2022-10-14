@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    background-color: hsl(210, 36%, 96%);
+}
+header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.todo {
+    margin-top: 100px;
+}
+.details {
+    font-weight: 600;
+}
+.log {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    background-color: hsl(210, 36%, 96%);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.log:hover {
+    box-shadow: 1px 1px 10px 1px rgb(125, 166, 197);
+}
+.log:active {
+    scale: 0.9;
+}
+@media(max-width:500px) {
+    .log {
+        cursor: auto;
+    }
+}

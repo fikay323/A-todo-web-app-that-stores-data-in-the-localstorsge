@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="adminPage.css">
+    <style>
+       
+    </style>
+</head>
+<body onload="getLocal()">
+    <input type="text" placeholder="First Name" id="first">
+    <input type="text" placeholder="Last Name" id="second">
+    <input type="text" placeholder="Email" id="third">
+    <input type="password" placeholder="Password" id="fourth">
+    <input type="number" placeholder="Age" id="fifth">
+    <input type="number" placeholder="Phone Number" id="sixth">
+    <button onclick="checkEmpty()">Sign up</button>
+    <hr>
+    <div class="top">
+        <h1>All Students</h1>
+        <h3>Total Students:&nbsp</h3><h3 class="total">0</h3>
+    </div>
+    <table border="3px">
+        <thead>
+            <th>S/N</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Age</th>
+            <th>Tel No.</th>
+            <th>Matric No</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody class="body">
+        </tbody>
+    </table>
+    <div class="edit-layer">
+        <div class="info">
+            <div class="contFirst">
+                <label for="first2">First Name:</label>
+                <input type="text" placeholder="First Name" id="first2">
+            </div>
+            <div class="contSecond">
+                <label for="second2">Last Name:</label>
+                <input type="text" placeholder="Last Name" id="second2">
+            </div>
+            <div class="contThird">
+                <label for="third2">Email:</label>
+                <input type="text" placeholder="Email" id="third2">
+            </div>
+            <div class="contFourth">
+                <label for="fourth2">Password:</label>
+                <input type="text" placeholder="Password" id="fourth2">
+            </div>
+            <div class="contfifth">
+                <label for="fifth2">Age:</label>
+                <input type="number" placeholder="Age" id="fifth2">
+            </div>
+            <div class="contsixth">
+                <label for="sixth2">Phone:</label>
+                <input type="tel" placeholder="Phone Number" id="sixth2">
+            </div>
+        </div>
+    </div>
+    <script src="./adminPage.js"></script>
+</body>
+</html>
