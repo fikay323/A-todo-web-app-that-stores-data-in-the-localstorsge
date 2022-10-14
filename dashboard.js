@@ -1,8 +1,15 @@
 let unParsedUser = localStorage.getItem('active')
 let user = JSON.parse(unParsedUser)
+let userTodo = user.todo
 console.log(user);
 let nameDiv = document.querySelector('.name')
 nameDiv.innerText += ` ${user.firstName} ${user.lastName}!`
+function loadArray() {
+    if(userTodo.length !== 0) {
+        show()
+        cont.style.visibility = 'visible'
+    }
+}
 const logOut = ()=> {
     window.location.href = './login.html'
     localStorage.removeItem('active')
@@ -13,7 +20,6 @@ let inp = document.querySelector('input')
 let btn = document.querySelector('.btn')
 btn.addEventListener('click', check)
 let cont = document.querySelector('.container')
-let array = []
 let data 
 let con
 
@@ -28,47 +34,37 @@ function check(){
 }
 
 function save() {
-    con =''
     let obj = {
         title: inp.value,
     }
-    array.push(obj)
-    localStorage.setItem('todo', JSON.stringify(array))
+    userTodo.push(obj)
     show()
+    console.log(user);
     inp.value = ''
     cont.style.visibility = 'visible'
 }
 function show () {
+    localStorage.setItem('active', JSON.stringify(user))
     data = ''
-    console.log(data);
-    array.forEach((things, index)=> {
-        con = `<div class="created">${things.title.substr(0,11)} 
-        <button class="edit" onclick="edit(${index})">Edit</button> 
-        <button class="delete" onclick="remove(${index})">Delete</button>
-        </div>`
+    userTodo.forEach((things, index)=> {
+        con = `<div class="created">
+                    ${things.title.substr(0,11)} 
+                    <button class="edit" onclick="edit(${index})">Edit</button> 
+                    <button class="delete" onclick="remove(${index})">Delete</button>
+                </div>`
         data += con
     })
     cont.innerHTML = data
 }
 // Delete Function
 function remove(index) {
-    let con = ''
-    let data = ''
-    if (index === array.length) {
-        array.pop()
+    if (index === userTodo.length) {
+        userTodo.pop()
     }
     else {
-        array.splice(index, 1)
+        userTodo.splice(index, 1)
     }
-    localStorage.setItem('todo', JSON.stringify(array))
-    array.forEach((thing, index) => {
-        con = `<div class="created">${thing.title.substr(0,11)} 
-                <button class="edit">Edit</button> 
-                <button class="delete" onclick="remove(${index})">Delete</button>
-                </div>`
-                data += con
-            }) 
-    cont.innerHTML = data
+    show()
 }
 // Edit Function
 function edit(index) { 
@@ -76,30 +72,12 @@ function edit(index) {
     let data = ''
     let inp = document.querySelector('input')
 
-    inp.value = array[index].title
-    if (index === array.length) {
-        array.pop()
+    inp.value = userTodo[index].title
+    if (index === userTodo.length) {
+        userTodo.pop()
     }
     else {
-        array.splice(index, 1)
+        userTodo.splice(index, 1)
     }
-    array.forEach((thing, index) => {
-        con = `<div class="created">${thing.title.substr(0,11)} 
-        <button class="edit">Edit</button> 
-        <button class="delete" onclick="remove(${index})">Delete</button>
-        </div>`
-        data += con
-    }) 
-    cont.innerHTML = data
-}
-function loadArray() {
-    if(localStorage.todo) {
-        let todo = JSON.parse(localStorage.getItem('todo'))
-        todo.forEach(each => {
-            array.push(each)
-        })
-        console.log(array);
-        show()
-        cont.style.visibility = 'visible'
-    }
+    show()
 }

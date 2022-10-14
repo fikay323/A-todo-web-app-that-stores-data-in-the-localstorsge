@@ -41,6 +41,7 @@ const signUp = ()=>{
     user.lastName = lastname.value
     user.email = email.value
     user.passWord = password.value
+    user.todo = []
     let stringUser = JSON.stringify(user)
     localStorage.setItem(i, stringUser)
     i++
