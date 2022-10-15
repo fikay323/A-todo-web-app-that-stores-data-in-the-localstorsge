@@ -1,7 +1,6 @@
 let unParsedUser = localStorage.getItem('active')
 let user = JSON.parse(unParsedUser)
 let userTodo = user.todo
-console.log(user);
 let nameDiv = document.querySelector('.name')
 nameDiv.innerText += ` ${user.firstName} ${user.lastName}!`
 function loadArray() {
@@ -39,7 +38,6 @@ function save() {
     }
     userTodo.push(obj)
     show()
-    console.log(user);
     inp.value = ''
     cont.style.visibility = 'visible'
 }
