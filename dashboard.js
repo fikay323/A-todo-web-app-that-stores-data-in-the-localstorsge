@@ -43,15 +43,18 @@ function save() {
     inp.value = ''
     cont.style.visibility = 'visible'
 }
-function show () {
+function show() {
+    if(userTodo.length === 0) {
+        cont.style.visibility = 'hidden'
+    }
     localStorage.setItem('active', JSON.stringify(user))
     data = ''
     userTodo.forEach((things, index)=> {
         con = `<div class="created">
-                    ${things.title.substr(0,11)} 
+                    <div class="eachTodo">${things.title}</div>
                     <button class="edit" onclick="edit(${index})">Edit</button> 
                     <button class="delete" onclick="remove(${index})">Delete</button>
-                    </div>`
+                </div>`
         data += con
     })
     cont.innerHTML = data

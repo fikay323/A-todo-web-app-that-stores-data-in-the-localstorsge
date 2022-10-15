@@ -9,9 +9,9 @@ header {
     width: 100%;
     cursor: no;
 }
-
 .todo {
     margin-top: 130px;
+    margin-left: 20px;
 }
 .details {
     font-weight: 600;
