@@ -51,10 +51,11 @@ function show () {
                     ${things.title.substr(0,11)} 
                     <button class="edit" onclick="edit(${index})">Edit</button> 
                     <button class="delete" onclick="remove(${index})">Delete</button>
-                </div>`
+                    </div>`
         data += con
     })
     cont.innerHTML = data
+    changeOthers()
 }
 // Delete Function
 function remove(index) {
@@ -67,9 +68,7 @@ function remove(index) {
     show()
 }
 // Edit Function
-function edit(index) { 
-    let con = ''
-    let data = ''
+function edit(index) {
     let inp = document.querySelector('input')
 
     inp.value = userTodo[index].title
@@ -80,4 +79,18 @@ function edit(index) {
         userTodo.splice(index, 1)
     }
     show()
+}
+// change todo in the account in localstorage
+function changeOthers(){
+    if(localStorage.active) {
+        const active = JSON.parse(localStorage.getItem('active'))
+        for(let i = 0; i <localStorage.length; i++) {
+            const key = localStorage.key(i)
+            const obj = JSON.parse(localStorage.getItem(localStorage.key(i)))
+            if(typeof obj === 'object' && key !== 'active' && obj.email === active.email) {
+                stringUser = JSON.stringify(user)
+                localStorage.setItem(key, stringUser)
+            }
+        }
+    }
 }

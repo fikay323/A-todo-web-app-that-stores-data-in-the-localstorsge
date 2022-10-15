@@ -30,6 +30,7 @@ const change = ()=>{
 const cont = document.querySelector('.cont')
 const btn = document.querySelector('.btn2')
 const wrong = document.querySelector('.wrong')
+const btn2 = document.querySelector('.btn2')
 const signIn = ()=>{
     if(email.disabled === false) {
         let isFound = false
@@ -46,7 +47,7 @@ const signIn = ()=>{
                 isFound = true
             }
         })
-        isFound ? '' : console.log('Email not found, pls try again or create an account')
+        isFound ? '' : alert('Email not found, pls try again or create an account')
     }
     else if(email.disabled === true) {
         let found = false
@@ -61,3 +62,4 @@ const signIn = ()=>{
         found ? '' : wrong.style.display = 'block'
     }
 }
+btn2.addEventListener('click', signIn)
