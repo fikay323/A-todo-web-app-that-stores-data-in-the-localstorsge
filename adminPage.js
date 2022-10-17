@@ -24,7 +24,7 @@ const getLocal = ()=>{
 }
 const checkEmpty = ()=>{
     let isEmpty = false
-    if(first.value === '' || second.value === '' || third.value === '' || fourth.value === '' || fifth.value === '' || sixth.value === '') {
+    if(first.value === '' || second.value === '' || third.value === '' || fourth.value === '') {
         isEmpty = true
     }
     isEmpty ? alert('Pls fill in all the required fields') : checkEmail()
@@ -51,22 +51,13 @@ function padLeadingZeros(num, size) {
     return s
 }
 const signUp = ()=>{
-    let randomNumber = Math.floor(Math.random() * 10000) + 1
-    let date = new Date()
-    let month = date.getMonth()
-    let day = date.getDate()
-    let year = date.getFullYear()
-    let signDate = `${padLeadingZeros(day, 2)}/${padLeadingZeros(month, 2)}/${year}`
     let obj = {}
     obj.firstName = first.value
     obj.lastName = second.value
     obj.email = third.value
     obj.passWord = fourth.value
-    obj.age = fifth.value
-    obj.phone = sixth.value
-    obj.matricNum = 'SQI'+padLeadingZeros(randomNumber, 5)
-    obj.dateSign = signDate
     obj.formerEmail = ''
+    obj.todo = []
     allStudents.push(obj);
     localStorage.setItem(localStorage.length, JSON.stringify(obj))
     display()
@@ -74,8 +65,6 @@ const signUp = ()=>{
     second.value=''
     third.value=''
     fourth.value=''
-    fifth.value=''
-    sixth.value=''
 }
 var data
 const display = ()=>{
@@ -93,10 +82,6 @@ const display = ()=>{
         lastname = item.lastName
         email = item.email
         Password = item.passWord
-        Age = item.age
-        Phone = item.phone
-        MatricNum = item.matricNum
-        signDate = item.dateSign
         formerEmail = item.formerEmail
         data += `<tr>
                     <td style='text-align:center;'>${sn+1}</td>
@@ -104,10 +89,6 @@ const display = ()=>{
                     <td>${lastname}</td>
                     <td>${email}</td>
                     <td>${Password}</td>
-                    <td>${Age}</td>
-                    <td>${Phone}</td>
-                    <td>${MatricNum}</td>
-                    <td>${signDate}</td>
                     <td><button onclick='edit(${i})' class="edit">Edit</button></td>
                     <td><button onclick='deleted(${i})' class="delete">Delete</button></td>
                 </tr>`
@@ -144,8 +125,6 @@ const edit = (i)=>{
     second2.value = allStudents[i].lastName
     third2.value = allStudents[i].email
     fourth2.value = allStudents[i].passWord
-    fifth2.value = allStudents[i].age
-    sixth2.value = allStudents[i].phone
 }
 const save = (i)=>{
     if (allStudents.length > 0) {
@@ -162,10 +141,6 @@ const save = (i)=>{
                     obj.lastName = second2.value
                     obj.email = third2.value
                     obj.passWord = fourth2.value
-                    obj.age = fifth2.value
-                    obj.phone = sixth2.value
-                    obj.dateSign = parsebob.dateSign
-                    obj.matricNum = parsebob.matricNum
                     localStorage.setItem(localStorage.key(k), JSON.stringify(obj))
                     changeActive(prevEmail, key)
                 }
@@ -176,8 +151,6 @@ const save = (i)=>{
     allStudents[i].lastName = second2.value
     allStudents[i].email = third2.value
     allStudents[i].passWord = fourth2.value
-    allStudents[i].age = fifth2.value
-    allStudents[i].phone = sixth2.value
     document.querySelector('.save').remove()
     display()
     editLayer.style.visibility ='hidden'
@@ -191,8 +164,6 @@ const changeActive = (prevEmail, key)=>{
             active.lastName = changed.lastName
             active.email = changed.email
             active.passWord = changed.passWord
-            active.age = changed.age
-            active.phone = changed.phone
             localStorage.setItem('active', JSON.stringify(active))
         }
     }
