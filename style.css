@@ -98,7 +98,7 @@ input:focus{
 }
 button i {
     font-size: 15px;
-    color: rgb(170,68,176);
+    color: grey;
 }
 p {
     text-align: center;
