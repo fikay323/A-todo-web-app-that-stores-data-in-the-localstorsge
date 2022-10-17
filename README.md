@@ -1,3 +1,4 @@
-# School-management-system
-A school management system that allows creating and signing in an account 
-Also allowing changing of details from the admin page
+# Todo Web App
+A todo web app that stores data in the localstorage
+Allows signing in and logging out,
+Enabling each user to have their todo list separately
