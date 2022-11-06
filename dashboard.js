@@ -1,19 +1,30 @@
-let unParsedUser = localStorage.getItem('active')
-let user = JSON.parse(unParsedUser)
-let userTodo = user.todo
-let nameDiv = document.querySelector('.name')
-nameDiv.innerText += ` ${user.firstName} ${user.lastName}!`
+var unParsedUser
+var user
+var userTodo
+var nameDiv = document.querySelector('.name')
 function loadArray() {
     if(userTodo.length !== 0) {
         show()
         cont.style.visibility = 'visible'
     }
 }
+const checkActive = ()=> {
+    if(localStorage.active) {
+        unParsedUser = localStorage.getItem('active')
+        user = JSON.parse(unParsedUser)
+        userTodo = user.todo
+        nameDiv.innerText += ` ${user.firstName} ${user.lastName}!`
+        loadArray()
+    }
+    else {
+        console.log('fail');
+        window.location.href = 'login.html'
+    }
+}
 const logOut = ()=> {
     window.location.href = './login.html'
     localStorage.removeItem('active')
 }
-
 
 let inp = document.querySelector('input')    
 let btn = document.querySelector('.btn')
@@ -22,7 +33,7 @@ let cont = document.querySelector('.container')
 let data 
 let con
 
-loadArray()
+
 function check(){
     if (inp.value === '') {
         alert('Pls write the title or body of the note before saving') 
