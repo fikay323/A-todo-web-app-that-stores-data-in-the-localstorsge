@@ -1,7 +1,7 @@
 let student
 let allStudents =[]
-if(localStorage.length>1) { 
-    for(let i = 0; i< localStorage.length; i++) {
+if(localStorage.length>0) { 
+    for(let i = 0; i < localStorage.length; i++) {
         let bob = localStorage.getItem(localStorage.key(i))
         let parsebob = JSON.parse(bob)
         if(typeof parsebob === 'object') {
