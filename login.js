@@ -32,7 +32,7 @@ const btn = document.querySelector('.btn2')
 const wrong = document.querySelector('.wrong')
 const btn2 = document.querySelector('.btn2')
 const signIn = ()=>{
-    if(email.disabled === false) {
+    if(email.classList.contains('verified') === false) {
         let isFound = false
         allStudents.map(item => {
             const emal = item.email
@@ -41,7 +41,7 @@ const signIn = ()=>{
                 setTimeout(()=>{
                     cont.style.height = '40px'
                     cont.style.overFlow = 'visible'
-                    email.disabled = true
+                    email.classList.add('verified')
                     btn.name
                 },50)
                 isFound = true
@@ -49,17 +49,19 @@ const signIn = ()=>{
         })
         isFound ? '' : alert('Email not found, pls try again or create an account')
     }
-    else if(email.disabled === true) {
-        let found = false
-        allStudents.map(item =>{
-            const pass = item.passWord
-            if (pass === password.value) {
-                localStorage.setItem('active', JSON.stringify(item))
-                window.location.href = 'dashboard.html'
-                found = true
-            }
-        })
-        found ? '' : wrong.style.display = 'block'
+    else if (email.classList.contains("verified") === true) {
+      let found = false;
+      allStudents.map((item) => {
+        const pass = item.passWord;
+        const emal = item.email;
+        if (pass === password.value && emal === email.value) {
+          localStorage.setItem("active", JSON.stringify(item));
+          console.log(item);
+          window.location.href = 'dashboard.html'
+          found = true;
+        }
+      });
+      found ? "" : (wrong.style.display = "block");
     }
 }
 btn2.addEventListener('click', signIn)
