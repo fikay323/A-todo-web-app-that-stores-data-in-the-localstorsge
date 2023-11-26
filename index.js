@@ -36,7 +36,7 @@ const checkEmail = ()=>{
     isFound ? alert('An account has already been registered with this email') : signUp()
 }
 const signUp = ()=>{
-    let user ={}
+    let user = {}
     user.firstName = firstname.value
     user.lastName = lastname.value
     user.email = email.value
@@ -45,4 +45,5 @@ const signUp = ()=>{
     let stringUser = JSON.stringify(user)
     localStorage.setItem(i, stringUser)
     i++
+    window.location.href = "./login.html"
 }
