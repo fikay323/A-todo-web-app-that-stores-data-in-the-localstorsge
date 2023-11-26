@@ -8,14 +8,14 @@ if(localStorage.length>0) {
             allStudents[i] = parsebob
         }
     }
-    let filtered = allStudents.filter((el)=>{
+    let filtered = allStudents.filter((el) => {
         return el !== null
     })
     allStudents = filtered
 }
 let inp = document.getElementById('password')
 let eye = document.querySelector('.fa-solid')
-const change = ()=>{
+const change = () =>{
     if(inp.type == 'password') {
         inp.type = 'text'
         eye.classList.remove('fa-eye-slash')
@@ -42,6 +42,7 @@ const signIn = ()=>{
                     cont.style.height = '40px'
                     cont.style.overFlow = 'visible'
                     email.classList.add('verified')
+                    email.disabled = true
                     btn.name
                 },50)
                 isFound = true
